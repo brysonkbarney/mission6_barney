@@ -38,5 +38,13 @@ namespace mission6_barney.Controllers
             return View("Confirmation", response);
         }
 
+        public IActionResult MovieRecords() 
+        {
+            var movies = _context.Movies
+                .OrderBy(x => x.Title).ToList();
+
+            return View(movies);
+        }
+
     }
 }
