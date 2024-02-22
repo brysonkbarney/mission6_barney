@@ -1,40 +1,69 @@
 ﻿@model Movie
+@{
+    ViewData["Title"] = "Form";
+}
 
 <h1>Form</h1>
 
 
 <form method="post">
-    <label asp-for="Category">Category:</label>
-    <input asp-for="Category" required />
+
+    <input type="hidden" asp-for="MovieId"/>
+
+    <select asp-for="CategoryId">
+        <option value="">Select a category</option>
+        @foreach (Category c in ViewBag.Categories)
+        {
+            <option value="@c.CategoryId">@c.CategoryName</option>
+        }
+    </select>
+    <br />
     <br />
     <label asp-for="Title">Title:</label>
     <input asp-for="Title" required />
     <br />
+    <br />
     <label asp-for="Year">Year:</label>
     <input asp-for="Year" required />
     <br />
+    <br />
     <label asp-for="Director">Director:</label>
-    <input asp-for="Director" required />
+    <input asp-for="Director"/>
+    <br />
     <br />
     <label asp-for="Rating">Rating</label>
-    <select asp-for="Rating" required>
+    <select asp-for="Rating">
         <option value="G">G</option>
         <option value="PG">PG</option>
         <option value="PG-13">PG-13</option>
         <option value="R">R</option>
     </select>
     <br />
-    <label asp-for="Edited">Edited:</label>
-    <select asp-for="Edited">
+    <br />
+    <label asp-for="CopiedToPlex">CopiedToPlex:</label>
+    <select asp-for="CopiedToPlex" required>
         <option value="true">Yes</option>
         <option value="false">No</option>
     </select>
     <br />
+    <br />
+    <label asp-for="Edited">Edited:</label>
+    <select asp-for="Edited" required>
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+    </select>
+    <br />
+    <br />
     <label asp-for="LentTo">Lent To:</label>
     <input asp-for="LentTo" />
+    <br />
     <br />
     <label asp-for="Notes">Notes:</label>
     <input asp-for="Notes" maxlength="25" />
     <br />
+    <br />
     <button type="submit">Submit Application</button>
+
+    <div asp-validation-summary="All"></div>
+
 </form>

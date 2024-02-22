@@ -3,6 +3,14 @@
 *@
 @{
 }
+
+@{
+    ViewData["Title"] = "Confirmation";
+}
 @model Movie
 <h2>Entry Received</h2>
 <p>I love @Model.Title</p>
+<br />
+<div>
+	<a asp-controller="Home" asp-action="MovieRecords">View the collection</a>
+</div>
