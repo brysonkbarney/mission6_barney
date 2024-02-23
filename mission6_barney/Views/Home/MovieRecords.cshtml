@@ -6,17 +6,17 @@
 @model List<Movie>
 
 <table class="table table-bordered">
-
+    @* column headers *@
     <thead class="fw-bold">
         <tr>
-            <td>CategoryId</td>
+            <td>Category</td>
             <td>Title</td>
             <td>Year</td>
             <td>Director</td>
             <td>Rating</td>
             <td>Edited</td>
-            <td>CopiedToPlex</td>
             <td>LentTo</td>
+            <td>CopiedToPlex</td>
             <td>Notes</td>
         </tr>
         
@@ -25,8 +25,9 @@
     @foreach (var x in Model)
     {
         <tbody>
+            @* column data pulling from models *@
             <tr>
-                <td>@x.CategoryId</td>
+                <td>@x.Category?.CategoryName</td>
                 <td>@x.Title</td>
                 <td>@x.Year</td>
                 <td>@x.Director</td>
